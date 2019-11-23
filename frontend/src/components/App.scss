@@ -1,0 +1,67 @@
+.html {
+  height: 100%;
+}
+.body {
+  height: 100%;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.messagesWrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.messages {
+  position: relative;
+  background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  background-color: #6beb34;
+  color: white;
+  position: absolute;
+  bottom: 20%;
+  margin-left: 2%;
+  margin-top: 5%;
+  float: right;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+/* BOTTOM BAR */
+
+/* Width 98% + 2% padding */
+.messagingWrapper {
+    width: 98%;
+    bottom: 0;
+    position: fixed;
+    background-color: gray;
+    padding: 2%;
+    justify-content: center;
+    height: 7%;
+}
+
+.inputbox {
+  background-color: white;
+  display: inline-block;
+  width: 80%;
+  border-radius: 30px;
+  height: 6vh;
+  line-height: 6.5vh;
+}
+
+/* Width 18% */
+.button {
+  background-color: gray;
+  display: inline-block;
+  margin-left: 2%;
+  line-height: 6.5vh;
+}
+
+/* END BOTTOM BAR*/
