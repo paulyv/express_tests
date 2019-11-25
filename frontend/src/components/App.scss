@@ -1,50 +1,56 @@
-.html {
+/**.html {
   height: 100%;
 }
 .body {
   height: 100%;
-}
-.wrapper {
-  width: 100%;
-  height: 100%;
-}
+} **/
 
-.messagesWrapper {
+.wrapper {
+  position: relative;
   width: 100%;
   height: 100vh;
 }
 
-.messages {
-  position: relative;
-  background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
-  background-repeat: repeat;
+.messagesWrapper {
+  position: absolute;
   width: 100%;
   height: 100%;
+  background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
+  background-repeat: repeat;
+}
+
+
+.messages {
+  position: absolute;
+  width: min-content;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  left: 85%;
 }
 
 .message {
   background-color: #6beb34;
   color: white;
-  position: absolute;
-  bottom: 20%;
-  margin-left: 2%;
-  margin-top: 5%;
-  float: right;
-  padding: 10px;
   border-radius: 30px;
+  width: min-content;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 /* BOTTOM BAR */
 
 /* Width 98% + 2% padding */
 .messagingWrapper {
-    width: 98%;
+    position: absolute;
+    width: 100%;
     bottom: 0;
-    position: fixed;
     background-color: gray;
-    padding: 2%;
     justify-content: center;
+    align-items: center;
     height: 7%;
+    text-align: center;
+
 }
 
 .inputbox {
@@ -54,6 +60,8 @@
   border-radius: 30px;
   height: 6vh;
   line-height: 6.5vh;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 /* Width 18% */
