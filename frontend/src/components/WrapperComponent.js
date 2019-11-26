@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import App from "./App";
+import Chat from "./Chat";
 import Login from "./Login";
 
 class WrapperComponent extends Component {
@@ -11,7 +11,7 @@ class WrapperComponent extends Component {
     const Logging = () => {
       let isLogged = true;
       if (isLogged) {
-        return <App />;
+        return <Chat />;
       } else {
         return <Login />;
       }
