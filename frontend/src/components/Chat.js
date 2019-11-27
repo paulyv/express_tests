@@ -7,10 +7,10 @@ import SendIcon from "@material-ui/icons/Send";
 import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
 import moment from "moment";
-import socketIOClient from "socket.io-client";
-import { Event } from 'react-socket-io';
+import AppContext from '../AppContext';
+
 const uuid = require('uuid');
-const socket = io("http://localhost:8080");
+const socket = io("http://192.168.1.173:8080");
 
 
 class Chat extends Component {
