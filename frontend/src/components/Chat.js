@@ -7,22 +7,39 @@ import SendIcon from "@material-ui/icons/Send";
 import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
 import moment from "moment";
+import socketIOClient from "socket.io-client";
+import { Event } from 'react-socket-io';
 const uuid = require('uuid');
+const socket = io("http://localhost:8080");
+
 
 class Chat extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [], newMessage:"" };
-    const socket = io("http://localhost:8080");
+    this.state = { messages: [], newMessage: "" };
+
   }
 
+  componentDidMount() {
+    let _this = this;
+    socket.on('chat message', function(msg){
+      console.log(msg.msg);
+      console.log(_this.state.messages);
+      let messages = _this.state.messages;
+      messages.push(msg);
+      _this.setState({messages: messages});
+    });
+  }
+
+
   handleAdd = () => {
-  let newDate = moment(new Date()).format("DD/MM/YYYY");
+  let newDate = moment(new Date()).format("DD/MM/YYYY HH:mm");
   let newId = uuid.v1();
   let newMessage = {id: newId, type: "normal", msg: this.state.newMessage, timestamp: newDate};
-  this.state.messages.push(newMessage);
   this.setState({newMessage: ""});
+  socket.emit('chat message', newMessage);
 };
+
 
 handleInputChange = e => {
   this.setState({ newMessage: e.target.value });
@@ -32,6 +49,7 @@ handleInputChange = e => {
     const messages = this.state.messages.map((item, key) =>
         <div key={item.id} className="message">{item.msg}</div>
     );
+
     return (
       <>
         <div className="wrapper">
