@@ -12,7 +12,6 @@ import AppContext from '../AppContext';
 const uuid = require('uuid');
 const socket = io("http://192.168.1.173:8080");
 
-
 class Chat extends Component {
   constructor(props) {
     super(props);
