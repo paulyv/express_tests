@@ -9,7 +9,19 @@ import "./Login.scss";
   super(props);
   }
 
+  handleRoomChange = e => {
+    this.setState({ room: e.target.value });
+  };
+  handleUsernameChange = e => {
+  this.setState({ username: e.target.value });
+  };
+  handleJoin = e => {
+    this.props.setRoom(this.state.room);
+    this.props.setUsername(this.state.username);
+  }
+
   render() {
+
     return (
     <>
       <div classname="page-wrapper">
@@ -20,6 +32,7 @@ import "./Login.scss";
                     placeholder="Room"
                     fullWidth
                     margin="normal"
+                    onChange={this.handleRoomChange}
                     InputLabelProps={{
                       shrink: true
                     }}
@@ -31,13 +44,14 @@ import "./Login.scss";
                     placeholder="Username"
                     fullWidth
                     margin="normal"
+                    onChange={this.handleUsernameChange}
                     InputLabelProps={{
                       shrink: true
                     }}
                   />
             </div>
             <div className="join-btn-wrapper">
-              <Button variant="outlined" color="primary">
+              <Button variant="outlined" color="primary" onClick={e => this.handleJoin(e)}>
                 Join
               </Button>
             </div>

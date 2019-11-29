@@ -15,9 +15,9 @@ class WrapperComponent extends Component {
       <AppContext.Consumer>
         {(context) => {
           if(context.values.username == '') {
-            return <Login setUsername={context.setUsername}/>
+            return <Login setUsername={context.setUsername} setRoom={context.setRoom}/>
           }
-            return <Chat username={context.values.username} />
+            return <Chat username={context.values.username} room={context.values.room} />
         }}
 
         </AppContext.Consumer>
