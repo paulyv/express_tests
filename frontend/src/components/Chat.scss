@@ -21,23 +21,43 @@
   overflow-x: scroll
 }
 
+$leftDesktop: 85%;
+$leftIpad: 80%;
+$leftMobile: 75%;
 
 .messages {
   position: absolute;
-  width: min-content;
-  left: 75%;
+  @media only screen and (min-width: 1000px) {
+    left: $leftDesktop;
+  }
+  @media only screen and (max-width: 1000px) {
+    left: $leftIpad;
+  }
+  @media only screen and (max-width: 500px) {
+    left: $leftMobile;
+  }
   margin-bottom: 50px;
   bottom: 0;
 }
 
 .message {
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20%;
+  left: 0% !important;
+}
+
+.ownMessage {
   background-color: #6beb34;
   color: white;
-  border-radius: 30px;
-  width: min-content;
+  border-radius: 5px;
   padding: 10px;
-  margin-bottom: 8%;
-}
+  margin-bottom: 20%;
+} 
+
+
 
 /* BOTTOM BAR */
 

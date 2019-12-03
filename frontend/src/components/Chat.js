@@ -16,11 +16,16 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = { messages: [], newMessage: "" };
-
   }
+
 
   componentDidMount() {
     let _this = this;
+
+    /** Tell the server which room to connect **/
+    socket.emit('room', this.props.room);
+
+    /** A message coming from the socket **/
     socket.on('chat message', function(msg){
       console.log(msg.msg);
       console.log(_this.state.messages);
@@ -34,7 +39,7 @@ class Chat extends Component {
   handleAdd = () => {
   let newDate = moment(new Date()).format("DD/MM/YYYY HH:mm");
   let newId = uuid.v1();
-  let newMessage = {id: newId, type: "normal", msg: this.state.newMessage, timestamp: newDate};
+  let newMessage = {id: newId, type: "normal", msg: this.state.newMessage, timestamp: newDate, room: this.props.room, username: this.props.username};
   this.setState({newMessage: ""});
   socket.emit('chat message', newMessage);
 };
@@ -45,9 +50,13 @@ handleInputChange = e => {
 };
 
   render() {
-    const messages = this.state.messages.map((item, key) =>
-        <div key={item.id} className="message">{item.msg}</div>
-    );
+    const messages = this.state.messages.map((item, key) => {
+        return this.props.username == item.username ?
+        <div key={item.id} className="ownMessage">Me: {item.msg}</div>
+        :
+        <div key={item.id} className="message">{item.username}: {item.msg}</div>
+    }
+  );
 
     return (
       <>
