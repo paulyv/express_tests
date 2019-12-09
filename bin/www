@@ -21,15 +21,33 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+var userlist = [];
+
 var io = require('socket.io')(server);
 io.on('connection', function(socket){
+
   console.log('a user connected');
   socket.on('disconnect', function() {
-    console.log('user disconnected');
+  let idx = userlist.findIndex(v => v.id === socket.id);
+  let user = userlist[idx];
+  userlist.splice(idx, 1);
+  io.sockets.in(user.room).emit('userlist', userlist);
+  console.log('user disconnected');
   })
-  socket.on('room', function(room) {
-    socket.join(room);
-    console.log("user joined a room: " + room);
+  socket.on('room', function(roomData) {
+    socket.join(roomData.room);
+    console.log(roomData.username + " joined a room: " + roomData.room);
+    let newUser = {id: socket.id, room: roomData.room, username: roomData.username};
+    userlist.push(newUser);
+    let usersInCurrentRoom = [];
+    userlist.map(function(user) {
+      if(user.room === roomData.room) {
+        usersInCurrentRoom.push(user);
+      }
+    })
+
+    io.sockets.in(roomData.room).emit('userlist', usersInCurrentRoom);
+
   })
   socket.on('chat message', function(msg){
     console.log('user: ' + msg.username + ' message: ' + msg.msg + ' room: ' + msg.room);

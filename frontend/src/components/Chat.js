@@ -23,7 +23,9 @@ class Chat extends Component {
     let _this = this;
 
     /** Tell the server which room to connect **/
-    socket.emit('room', this.props.room);
+    let roomData = {room: this.props.room, username: this.props.username};
+
+    socket.emit('room', roomData);
 
     /** A message coming from the socket **/
     socket.on('chat message', function(msg){
@@ -32,6 +34,11 @@ class Chat extends Component {
       let messages = _this.state.messages;
       messages.push(msg);
       _this.setState({messages: messages});
+    });
+
+    socket.on('userlist', function(msg){
+      console.log(msg);
+      _this.setState({availableUsers: msg});
     });
   }
 
@@ -59,7 +66,7 @@ handleInputChange = e => {
   );
 
   const availableUsers = this.state.availableUsers.map((item, key) => {
-      return <div key={item.id}>{item.usr}</div>
+      return <div key={item.id}>{item.username}</div>
   }
 );
 
