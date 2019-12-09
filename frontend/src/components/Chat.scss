@@ -1,96 +1,153 @@
-/**.html {
-  height: 100%;
-}
+$leftBarDesktop: 200px;
+$leftBarMobile: 120px;
+
 .body {
-  height: 100%;
-} **/
-
-.wrapper {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.messagesWrapper {
+.leftBar {
+  box-sizing: border-box;
   position: absolute;
-  width: 100%;
   height: 100%;
+  @media only screen and (max-width: 500px) {
+    width: $leftBarMobile;
+  }
+  @media only screen and (min-width: 500px) {
+    width: $leftBarDesktop;
+  }
+  left: 0;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.main {
+  box-sizing: border-box;
+  position: absolute;
+  height: calc(100% - 60px);
+  @media only screen and (max-width: 500px) {
+    left: $leftBarMobile;
+  }
+  @media only screen and (min-width: 500px) {
+    left: $leftBarDesktop;
+  }
+  right: 0;
   background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
   background-repeat: repeat;
-  overflow-x: scroll
+  overflow-y: scroll;
+  z-index: 0;
+
 }
 
-$leftDesktop: 85%;
-$leftIpad: 80%;
-$leftMobile: 75%;
+.main-relative {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-.messages {
+.msg-wrapper {
+  box-sizing: border-box;
   position: absolute;
-  @media only screen and (min-width: 1000px) {
-    left: $leftDesktop;
-  }
-  @media only screen and (max-width: 1000px) {
-    left: $leftIpad;
-  }
-  @media only screen and (max-width: 500px) {
-    left: $leftMobile;
-  }
-  margin-bottom: 50px;
+  width: 100%;
   bottom: 0;
 }
 
-.message {
-  background-color: gray;
-  color: white;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20%;
-  left: 0% !important;
+.msg-other {
+  box-sizing: border-box;
+  position: relative;
+  text-align: left;
+  margin: 0 10px 5px 10px;
+  float: left;
+  padding: 5px;
+  background-color: #CACACA;
+  border-radius: 7px;
 }
 
-.ownMessage {
-  background-color: #6beb34;
-  color: white;
+.msg-own {
+  position: relative;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 80%;
+  background-color: #98F23F;
   border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20%;
-} 
-
-
-
-/* BOTTOM BAR */
-
-/* Width 98% + 2% padding */
-.messagingWrapper {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    background-color: gray;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+  text-align: left;
+  margin: 0 10px 5px 10px;
+  float: right;
+  padding: 7px;
 }
 
-.inputbox {
+.msg-user {
+  font-weight: 700;
+  font-size: small;
+}
+
+.msg-timestamp {
+  text-align: right;
+  font-size: small;
+  font-weight: 500;
+  color: #3E3E3E;
+
+}
+
+.divider {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  box-sizing: border-box;
   position: absolute;
+  @media only screen and (max-width: 500px) {
+    left: $leftBarMobile;
+  }
+  @media only screen and (min-width: 500px) {
+    left: $leftBarDesktop;
+  }
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background-color: #EAEAEA;
+  z-index: 9;
+}
+
+.footer-relative {
+  box-sizing: border-box;
+  position: relative;
+
+}
+
+.footer-wrapper {
+  box-sizing: border-box;
+  margin-left: 10%;
+  margin-top: 1%;
+  bottom: 0 !important;
+}
+
+.input-box {
+  box-sizing: border-box;
+  position: relative;
+  bottom: 0;
+  top: 0;
+  margin: auto;
   background-color: white;
   display: inline-block;
   width: 80%;
   border-radius: 30px;
-  line-height: 6.5vh;
+
 }
 
-/* Width 18% */
 .button {
-  background-color: gray;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #EAEAEA;
   display: inline-block;
-  margin-left: 2%;
-  line-height: 6.5vh;
+  margin-left: 5px;
 }
-
-/* END BOTTOM BAR*/

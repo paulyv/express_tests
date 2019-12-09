@@ -15,7 +15,7 @@ const socket = io("http://192.168.1.173:8080");
 class Chat extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [], newMessage: "" };
+    this.state = { messages: [], newMessage: "", availableUsers: []};
   }
 
 
@@ -52,34 +52,52 @@ handleInputChange = e => {
   render() {
     const messages = this.state.messages.map((item, key) => {
         return this.props.username == item.username ?
-        <div key={item.id} className="ownMessage">Me: {item.msg}</div>
+        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-own"><div className="msg-user">Me: <br /></div>{item.msg} <br/> <div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
         :
-        <div key={item.id} className="message">{item.username}: {item.msg}</div>
+        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-other"><div className="msg-user">{item.username}: <br /></div> {item.msg}</div></>
     }
   );
 
+  const availableUsers = this.state.availableUsers.map((item, key) => {
+      return <div key={item.id}>{item.usr}</div>
+  }
+);
+
     return (
       <>
-        <div className="wrapper">
-          <div className="messagesWrapper">
-            <div className="messages">
-              {messages}
+      <div className="leftBar">
+        <div>AVAILABLE USERS:</div>
+        {availableUsers}
+      </div>
+
+      <div className="main">
+        <div className="main-relative">
+          <div className="msg-wrapper">
+            {messages}
+          </div>
+        </div>
+      </div>
+
+      <div className="footer">
+        <div className="footer-relative">
+          <div className="footer-wrapper">
+
+            <InputBase
+              className="input-box"
+              inputProps={{ "aria-label": "naked" }}
+              value={this.state.newMessage}
+              onChange={this.handleInputChange}
+            />
+
+            <div className="button">
+              <Fab color="default" aria-label="send" size="small" onClick={e => this.handleAdd(e)}>
+                <SendIcon style={{ fontSize: "100%" }} />
+              </Fab>
             </div>
+
           </div>
         </div>
-        <div className="messagingWrapper">
-          <InputBase
-            className="inputbox"
-            inputProps={{ "aria-label": "naked" }}
-            value={this.state.newMessage}
-            onChange={this.handleInputChange}
-          />
-          <div className="button">
-            <Fab color="default" aria-label="send" size="small" onClick={e => this.handleAdd(e)}>
-              <SendIcon style={{ fontSize: "100%" }} />
-            </Fab>
-          </div>
-        </div>
+      </div>
       </>
     );
   }
