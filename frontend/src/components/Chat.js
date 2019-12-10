@@ -61,7 +61,7 @@ handleInputChange = e => {
         return this.props.username == item.username ?
         <><div className="divider">&nbsp;</div><div key={item.id} className="msg-own"><div className="msg-user">Me: <br /></div>{item.msg} <br/> <div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
         :
-        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-other"><div className="msg-user">{item.username}: <br /></div> {item.msg}</div></>
+        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-other"><div className="msg-user">{item.username}: <br /></div> {item.msg} <br /> <div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
     }
   );
 
@@ -72,36 +72,42 @@ handleInputChange = e => {
 
     return (
       <>
-      <div className="leftBar">
-        <div>AVAILABLE USERS:</div>
-        {availableUsers}
-      </div>
+      <div className="bg-stripe"></div>
+      <div className="bg-rest"></div>
+      <div className="chat-wrapper">
+        <div className="top-bar"></div>
+        <div className="top-bar-left"></div>
+        <div className="leftBar">
+          <div>AVAILABLE USERS:</div>
+          {availableUsers}
+        </div>
 
-      <div className="main">
-        <div className="main-relative">
-          <div className="msg-wrapper">
-            {messages}
+        <div className="main">
+          <div className="main-relative">
+            <div className="msg-wrapper">
+              {messages}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="footer">
-        <div className="footer-relative">
-          <div className="footer-wrapper">
+        <div className="footer">
+          <div className="footer-relative">
+            <div className="footer-wrapper">
 
-            <InputBase
-              className="input-box"
-              inputProps={{ "aria-label": "naked" }}
-              value={this.state.newMessage}
-              onChange={this.handleInputChange}
-            />
+              <InputBase
+                className="input-box"
+                inputProps={{ "aria-label": "naked" }}
+                value={this.state.newMessage}
+                onChange={this.handleInputChange}
+              />
 
-            <div className="button">
-              <Fab color="default" aria-label="send" size="small" onClick={e => this.handleAdd(e)}>
-                <SendIcon style={{ fontSize: "100%" }} />
-              </Fab>
+              <div className="button">
+                <Fab color="default" aria-label="send" size="small" onClick={e => this.handleAdd(e)}>
+                  <SendIcon style={{ fontSize: "100%" }} />
+                </Fab>
+              </div>
+
             </div>
-
           </div>
         </div>
       </div>
