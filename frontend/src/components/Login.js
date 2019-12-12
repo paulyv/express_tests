@@ -26,7 +26,7 @@ import "./Login.scss";
     <>
       <div classname="page-wrapper">
         <div className="login-wrapper">
-          <div className="chat-room-wrapper">
+          <div className="chat-room-row">
             <TextField
                     id="standard-full-width"
                     placeholder="Room"
@@ -38,7 +38,7 @@ import "./Login.scss";
                     }}
                   />
             </div>
-            <div className="usernamer-wrapper">
+            <div className="usernamer-row">
             <TextField
                     id="standard-full-width"
                     placeholder="Username"
@@ -50,7 +50,7 @@ import "./Login.scss";
                     }}
                   />
             </div>
-            <div className="join-btn-wrapper">
+            <div className="join-btn-row">
               <Button variant="outlined" color="primary" onClick={e => this.handleJoin(e)}>
                 Join
               </Button>
