@@ -26,7 +26,6 @@
   display: grid;
   grid-template-columns: 200px auto;
   grid-template-rows: 50px auto 60px;
-
 }
 
 .top-bar-left {
@@ -37,6 +36,11 @@
   grid-column-end: 1;
   grid-row-start: 1;
   grid-row-end: 1;
+
+  padding: 10px;
+  font-weight: lighter;
+  overflow-x: scroll;
+  text-align: center;
 }
 
 .top-bar-right {
@@ -47,16 +51,34 @@
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
+
+  padding: 10px;
+  font-weight: lighter;
+  overflow-x: scroll;
+  text-align: center;
 }
 
 .leftBar {
   border-right: 0.5px solid rgb(217, 217, 217);
-  background-color: white;
+  background-color: rgb(240, 240, 240);
 
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 2;
   grid-row-end: 4;
+}
+
+.userlist-item {
+  background-color: rgb(240, 240, 240);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+
+  font-weight: lighter;
+}
+
+.userlist-item:hover {
+  background-color: rgb(222, 222, 222);
 }
 
 .main {

@@ -66,7 +66,7 @@ handleInputChange = e => {
   );
 
   const availableUsers = this.state.availableUsers.map((item, key) => {
-      return <div key={item.id}>{item.username}</div>
+      return <div key={item.id} className="userlist-item">{item.username}</div>
   }
 );
 
@@ -76,10 +76,9 @@ handleInputChange = e => {
       <div className="bg-rest"></div>
 
       <div className="chat-wrapper">
-        <div className="top-bar-left"></div>
-        <div className="top-bar-right"></div>  
+        <div className="top-bar-left">Online:</div>
+        <div className="top-bar-right">#{this.props.room}</div>
         <div className="leftBar">
-          <div>AVAILABLE USERS:</div>
           {availableUsers}
         </div>
 
