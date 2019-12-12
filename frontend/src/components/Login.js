@@ -37,7 +37,7 @@ import "./Login.scss";
                     }}
                   />
             </div>
-            <div className="usernamer-row">
+            <div className="username-row">
             <TextField
                     id="standard-full-width"
                     placeholder="Username"

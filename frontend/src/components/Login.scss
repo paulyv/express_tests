@@ -3,11 +3,12 @@
   width: 50%;
   top: 33%;
   left: 25%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto auto 70px;
+  grid-template-rows: auto auto 70px;
+
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .chat-room-row {
@@ -17,7 +18,7 @@
   grid-row-end: 1;
 }
 
-.usernamer-row {
+.username-row {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-row-start: 2;
