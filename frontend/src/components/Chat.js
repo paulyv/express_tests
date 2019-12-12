@@ -74,9 +74,10 @@ handleInputChange = e => {
       <>
       <div className="bg-stripe"></div>
       <div className="bg-rest"></div>
+
       <div className="chat-wrapper">
-        <div className="top-bar"></div>
         <div className="top-bar-left"></div>
+        <div className="top-bar-right"></div>  
         <div className="leftBar">
           <div>AVAILABLE USERS:</div>
           {availableUsers}

@@ -1,17 +1,14 @@
-$leftBarDesktop: 200px;
-$leftBarMobile: 120px;
-
 .body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: yellow;
 }
 
 .bg-stripe {
   height: 100px;
   background-color: rgb(59, 191, 158);
 }
+
 .bg-rest {
   height: calc(100vh - 100px);
   background-color: rgb(224, 224, 224);
@@ -20,67 +17,57 @@ $leftBarMobile: 120px;
 .chat-wrapper {
   position: absolute;
   width: 70%;
+  min-width: 270px !important;
   height: 95%;
   top: 2.5%;
   left: 15%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 50px auto 60px;
+
 }
 
-.top-bar {
-  height: 50px;
-  background-color: #EAEAEA;
-  border-bottom: 0.5px solid rgb(217, 217, 217);
-}
 .top-bar-left {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 200px;
-  height: 50px;
   background-color: #EAEAEA;
   border-right: 0.5px solid rgb(217, 217, 217);
+
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.top-bar-right {
+  background-color: #EAEAEA;
+  border-bottom: 0.5px solid rgb(217, 217, 217);
+
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
 }
 
 .leftBar {
-  box-sizing: border-box;
   border-right: 0.5px solid rgb(217, 217, 217);
-  position: absolute;
-  height: calc(100% - 50px);
-  @media only screen and (max-width: 500px) {
-    width: $leftBarMobile;
-  }
-  @media only screen and (min-width: 500px) {
-    width: $leftBarDesktop;
-  }
-  left: 0;
-  top: 30;
   background-color: white;
-  z-index: 10;
+
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .main {
-  box-sizing: border-box;
-  position: absolute;
-  height: calc(100% - 60px);
-  @media only screen and (max-width: 500px) {
-    left: $leftBarMobile;
-  }
-  @media only screen and (min-width: 500px) {
-    left: $leftBarDesktop;
-  }
-  right: 0;
   background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
   background-repeat: repeat;
   overflow-y: scroll;
-  z-index: 0;
 
-}
-
-.main-relative {
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  height: 100%;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
 }
 
 .msg-wrapper {
@@ -127,7 +114,6 @@ $leftBarMobile: 120px;
   font-size: small;
   font-weight: 500;
   color: #3E3E3E;
-
 }
 
 .divider {
@@ -139,25 +125,17 @@ $leftBarMobile: 120px;
 }
 
 .footer {
-  box-sizing: border-box;
-  position: absolute;
-  @media only screen and (max-width: 500px) {
-    left: $leftBarMobile;
-  }
-  @media only screen and (min-width: 500px) {
-    left: $leftBarDesktop;
-  }
-  right: 0;
-  bottom: 0;
-  height: 60px;
   background-color: #EAEAEA;
-  z-index: 9;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  min-width: 270px !important;
 }
 
 .footer-relative {
   box-sizing: border-box;
   position: relative;
-
 }
 
 .footer-wrapper {
@@ -177,7 +155,6 @@ $leftBarMobile: 120px;
   display: inline-block;
   width: 80%;
   border-radius: 30px;
-
 }
 
 .button {
