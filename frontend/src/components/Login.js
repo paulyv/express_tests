@@ -24,7 +24,6 @@ import "./Login.scss";
 
     return (
     <>
-      <div classname="page-wrapper">
         <div className="login-wrapper">
           <div className="chat-room-row">
             <TextField
@@ -56,7 +55,6 @@ import "./Login.scss";
               </Button>
             </div>
         </div>
-      </div>
     </>
     );
   }
