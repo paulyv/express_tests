@@ -7,11 +7,18 @@
 .bg-stripe {
   height: 100px;
   background-color: rgb(59, 191, 158);
+  @media(max-width: 500px) {
+  width: 100vh;
+  }
 }
 
 .bg-rest {
   height: calc(100vh - 100px);
   background-color: rgb(224, 224, 224);
+  @media(max-width: 660px) {
+  width: 100vh;
+  }
+
 }
 
 .chat-wrapper {
@@ -21,7 +28,10 @@
   height: 95%;
   top: 2.5%;
   left: 15%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  @media(min-width: 660px) {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
 
   display: grid;
   grid-template-columns: 200px auto;
@@ -39,7 +49,6 @@
 
   padding: 10px;
   font-weight: lighter;
-  overflow-x: scroll;
   text-align: center;
 }
 
@@ -54,7 +63,6 @@
 
   padding: 10px;
   font-weight: lighter;
-  overflow-x: scroll;
   text-align: center;
 }
 
@@ -67,7 +75,7 @@
   grid-row-start: 2;
   grid-row-end: 4;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .userlist-item {
@@ -75,7 +83,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 5px;
-
+  border-right: 0.5px solid rgb(217, 217, 217);
   font-weight: lighter;
 }
 
@@ -84,10 +92,10 @@
 }
 
 .main {
-  background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
+  position: relative;
+  //background-image: url("https://wallpapercave.com/wp/wp2824890.jpg");
+  background-image: url("./bg.png");
   background-repeat: repeat;
-  overflow-y: scroll;
-
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 2;
@@ -95,10 +103,12 @@
 }
 
 .msg-wrapper {
-  box-sizing: border-box;
   position: absolute;
+  box-sizing: border-box;
   width: 100%;
-  bottom: 0;
+  max-height: 100%;
+  bottom: 0 !important;
+  overflow-y: auto;
 }
 
 .msg-other {
@@ -108,9 +118,8 @@
   margin: 0 10px 5px 10px;
   float: left;
   padding: 5px;
-  background-color: #CACACA;
+  background-color: #ffffff;
   border-radius: 7px;
-  bottom: 60px;
 }
 
 .msg-own {
@@ -119,13 +128,12 @@
   box-sizing: border-box;
   width: max-content;
   max-width: 80%;
-  background-color: #98F23F;
+  background-color: #dcf8c7;
   border-radius: 5px;
   text-align: left;
   margin: 0 10px 5px 10px;
   float: right;
   padding: 7px;
-  bottom: 60px;
 }
 
 .msg-user {
@@ -134,6 +142,7 @@
 }
 
 .msg-timestamp {
+  padding-left: 40px;
   text-align: right;
   font-size: small;
   font-weight: 500;

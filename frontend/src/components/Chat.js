@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
 import moment from "moment";
 import AppContext from '../AppContext';
+import { animateScroll } from "react-scroll";
 
 const uuid = require('uuid');
 const socket = io("http://192.168.1.173:8080");
@@ -42,6 +43,16 @@ class Chat extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+}
+
+scrollToBottom() {
+    animateScroll.scrollToBottom({
+      containerId: "msg-wrapper"
+    });
+}
+
 
   handleAdd = () => {
   let newDate = moment(new Date()).format("DD/MM/YYYY HH:mm");
@@ -59,7 +70,7 @@ handleInputChange = e => {
   render() {
     const messages = this.state.messages.map((item, key) => {
         return this.props.username == item.username ?
-        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-own"><div className="msg-user">Me: <br /></div>{item.msg} <br/> <div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
+        <><div className="divider">&nbsp;</div><div key={item.id} className="msg-own"><div className="msg-user"></div>{item.msg}<div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
         :
         <><div className="divider">&nbsp;</div><div key={item.id} className="msg-other"><div className="msg-user">{item.username}: <br /></div> {item.msg} <br /> <div className="msg-timestamp">{moment(item.timestamp).format('HH:mm')}</div> </div></>
     }
@@ -83,11 +94,9 @@ handleInputChange = e => {
         </div>
 
         <div className="main">
-          <div className="main-relative">
-            <div className="msg-wrapper">
+            <div id="msg-wrapper" className="msg-wrapper">
               {messages}
             </div>
-          </div>
         </div>
 
         <div className="footer">
